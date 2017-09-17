@@ -2,12 +2,12 @@ pragma solidity ^0.4.15;
 
 contract Product {
    address public owner;
-   string public take;
+   uint public take;
    string public productId;
 
    function Product (
       address _owner,
-      string _take,
+      uint _take,
       string _productId)
    {
       owner = _owner;

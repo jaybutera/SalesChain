@@ -1,0 +1,62 @@
+pragma solidity ^0.4.15;
+
+contract UserFactory {
+   //User[] public users;
+
+   function createUser(address userId, address refr) returns (address newUser) {
+      User nUser = new User(userId, refr);//.then( user => { return user; });
+      return nUser;
+      //users.push(newUser);
+
+      //return newUser;
+   }
+}
+
+contract UserRegistry {
+   mapping (string => address) public users;
+}
+
+contract User {
+   string public userId;
+   address public userAddr;   // User pub key
+   address public referrer;
+   uint public payout;
+
+   function User (
+      string _userId,
+      address _userAddr,
+      address _referrer)
+   {
+      userId   = _userId;
+      userAddr = _userAddr;
+      referrer = _referrer;
+   }
+
+   /*
+   function madeSale(address productAddr) {
+      payout += Product.at(productAddr).take;
+
+      if (referrer != 0)
+         User.at(referrer).commision(.5 * take);
+   }
+
+   function commission(uint take) {
+      payout += take;
+
+      if (referrer != 0)
+         User.at(referrer).commision(.5 * take);
+   }
+   */
+}
+
+contract Sale {
+   address public product; // Reference to product cntrct
+   address public seller;  // User that made sale
+   uint256 time;           // Timestamp of sale
+
+   function Sale (address _product, address _seller, uint256 _time) {
+      product = _product;
+      seller = _seller;
+      time = _time;
+   }
+}

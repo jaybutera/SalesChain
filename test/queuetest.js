@@ -1,9 +1,13 @@
+/*
 var UserFactory = artifacts.require('UserFactory');
 var User = artifacts.require('User');
 var Product = artifacts.require('Product');
+*/
+var Register = artifacts.require('Register');
 
 contract('UserFactory', accounts => {
    // Create user
+   /*
    it('should create a user', () => {
       return UserFactory.deployed()
       .then( instance => {
@@ -23,4 +27,19 @@ contract('UserFactory', accounts => {
          user.createSale(product, Date.now());
       });
    });
+   */
+   //it('should do shit', () => {
+   Register.deployed().then( reg => {
+
+      var e = reg.Post().watch( (err, res) => {
+         console.log(res);
+      });
+
+      var t = reg.register("sup pup").then( t => {
+         console.log(t);
+      });
+
+      return 0;
+   });
+   //});
 });
